@@ -28,9 +28,19 @@ export default function HistoricoList({data, deleteFunc}) {
 
     // }
 
-    async function deleteRegister(id) {
+    async function deleteRegister() {
 
-      await deleteFunc(id);
+      Alert.alert('Deseja remover o regitro:', `Tipo: ${data.type} - Valor: ${data.value}`,
+      [
+        {
+         text: 'Cancelar',
+         style: `cancel`
+        },
+        {
+          text: 'Continuar',
+          onPress: () => deleteFunc(data.id)
+        }
+      ])
 
       // Keyboard.dismiss();
       
@@ -50,7 +60,7 @@ export default function HistoricoList({data, deleteFunc}) {
     }
 
     return(
-      <TouchableWithoutFeedback onLongPress={() => deleteRegister(data.id)} >
+      <TouchableWithoutFeedback onLongPress={() => deleteRegister()} >
 
       <Container>
   
@@ -75,4 +85,4 @@ export default function HistoricoList({data, deleteFunc}) {
       </TouchableWithoutFeedback>
     );
   
-  }
+  }  

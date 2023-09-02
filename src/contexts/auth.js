@@ -122,11 +122,11 @@ export default function AuthProvider({ children }) {
     }
 
     async function logoff() {
-      
-      await AsyncStorage.removeItem('@tokenSystem').then(
-        () => {
+      //removeItem('@tokenSystem')
+      await AsyncStorage.clear().then(
+        async () => {
           api.defaults.headers['Authorization'] = '';
-          setUser(null);
+          await setUser(null);
         });
       
     }

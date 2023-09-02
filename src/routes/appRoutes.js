@@ -4,6 +4,7 @@ import React from "react";
 
 import Home from '../pages/Home';
 import New from '../pages/New';
+import Profile from '../pages/Profile';
 
 const AppStack = createDrawerNavigator();
 
@@ -31,6 +32,11 @@ export default function AppRoutes() {
           <AppStack.Screen
            name="Novo Registro"
            component={New}
+          >
+          </AppStack.Screen>
+          <AppStack.Screen
+           name="Perfil"
+           component={Profile}
           >
           </AppStack.Screen>
         </AppStack.Navigator>

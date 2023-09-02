@@ -10,6 +10,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { format } from 'date-fns';
 
+import { Keyboard } from 'react-native';
+
 import BalanceItem from '../../components/BalanceItem';
 import HistoricoList from '../../components/HistoricoList';
 import HeaderCustom from '../../components/header';
