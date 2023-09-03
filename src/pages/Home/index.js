@@ -122,7 +122,7 @@ export default function Home() {
              <TouchableOpacity onPress={() => { setOpenModal(true)}}>
               <Ionicons name="calendar-outline" color="#121212" size={30}/>
              </TouchableOpacity>
-             <Title>Ultimas Movimentações</Title>
+             <Title>{format(dateCurrent, 'dd/MM/yyyy')}  -  Movimentações</Title>
             </Area>
 
             <List 
@@ -139,7 +139,7 @@ export default function Home() {
             />
            
            <Modal visible={openModal} animationType='fade' transparent={true}>
-             <CalendarModal setVisible={() => setOpenModal(false)} />
+             <CalendarModal sendDateChanged={(dateValue) => setDateCurrent(dateValue) } setVisible={() => setOpenModal(false)} />
            </Modal>
 
         </SafeAreaView>
