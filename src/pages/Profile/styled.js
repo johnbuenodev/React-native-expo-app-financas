@@ -33,7 +33,7 @@ export const LogoutText = styled.Text`
 export const MessageCustom = styled.Text`
   font-size: 18px;
   color: black;
-  font-weight: bold;
+  /* font-weight: bold; */
   justify-self: start;
   font-style: italic;
 `;

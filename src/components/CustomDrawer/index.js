@@ -1,23 +1,60 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { DrawerItemList, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
 import React, { useState, useContext} from 'react';
 
+import { Image } from 'react-native';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Platform, ActivityIndicator } from 'react-native';
 
-import { Container, ButtonMenu, TitleCustom } from './styled';
+import { AuthContext } from '../../contexts/auth';
 
-export default function CustomDrawer() {
+import { MessageCustom, NameCustom } from './styled';
+
+export default function CustomDrawer(props) { //recebe a props e repassa
+
+  const { user, logoff } = useContext(AuthContext);
 
   return(
-    <Container>
+    <DrawerContentScrollView {...props} >
 
-      <ButtonMenu onPress={() => navigation.openDrawer()} >  
-        <Ionicons name="menu" size={32} color="#121212" /> 
-      </ButtonMenu>
+      <View style={{ alignItems:'center', justifyContent: 'center', marginTop: 25 }}>
+        <Image 
+          source={require('../../assets/Logo.png')}
+          style={{ width:90, height:90 }}
+          resizeMode="contain"
+        />
+         
+        <View style={{ flexDirection:"row", justifyContent:"flex-start", paddingHorizontal: 4, marginBottom: 20 }}>
+          <MessageCustom>
+            Bem-vindo!
+          </MessageCustom>
+        </View>
+
+      </View>
+
+      <DrawerItemList {...props} />
+        
+      <DrawerItem  
+       {...props}
+       label="Sair do App"
+       onPress={() => logoff()}
+       style={{ marginTop: 350 }}
+      />
       
-      { title ? <TitleCustom>{title}</TitleCustom> : <Text></Text>}
-    
-    </Container>
+    </DrawerContentScrollView>
   );
 
 }
+
+      /* 
+        <View style={{ marginBottom: 20 , paddingHorizontal: 4}}>
+         <NameCustom numberOfLines={1}>
+         { user && user.name }
+         </NameCustom>
+        </View> */
+
+      /* ESSE BOTÃO ESTA COMENTADO CASO PRECISE EM OUTRA APLICAÇÃO <DrawerItem  
+       {...props}
+       label="Sair do App"
+       onPress={() => logoff()}
+       style={{  }}
+      /> */

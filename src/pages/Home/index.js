@@ -10,9 +10,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { format } from 'date-fns';
 
-import { Keyboard } from 'react-native';
+import { Keyboard, Modal } from 'react-native';
 
 import BalanceItem from '../../components/BalanceItem';
+import CalendarModal from '../../components/CalendarModal';
 import HistoricoList from '../../components/HistoricoList';
 import HeaderCustom from '../../components/header';
 import api from "../../services/api";
@@ -25,6 +26,8 @@ export default function Home() {
     const isFocused = useIsFocused();
 
     const [listBalance, setListBalance] = useState([]);
+
+    const [openModal, setOpenModal] = useState(false);
 
     const [listHistorico, setListHistorico] = useState([]);
     
@@ -116,15 +119,12 @@ export default function Home() {
             />
 
             <Area>
-             <TouchableOpacity>
+             <TouchableOpacity onPress={() => { setOpenModal(true)}}>
               <Ionicons name="calendar-outline" color="#121212" size={30}/>
              </TouchableOpacity>
              <Title>Ultimas Movimentações</Title>
             </Area>
 
-            {/* <ListHistoricoArea> */}
-
-            {/* <View style={{ flex: 1 }}> */}
             <List 
              data={listHistorico}
              showsVerticalScrollIndicator={true}
@@ -137,25 +137,12 @@ export default function Home() {
              contentContainerStyle={{ paddingBottom: 20 }}
              
             />
-            {/* </View> */}
-            
-{/* 
-            </ListHistoricoArea> */}
            
+           <Modal visible={openModal} animationType='fade' transparent={true}>
+             <CalendarModal setVisible={() => setOpenModal(false)} />
+           </Modal>
 
         </SafeAreaView>
     );
 
 }
-
-/*
-            <Text>Home</Text>
-            <Text>ID: { user.id } </Text>
-            <Text>Nome: { user.name } </Text>
-            <Text>E-mail: { user.email } </Text>
-            <Text>Balance: { user.balance } </Text>
-
-            <ButtonAcessar onPress={() => logoff()}>
-                <Text>Sair</Text>
-            </ButtonAcessar> 
-*/

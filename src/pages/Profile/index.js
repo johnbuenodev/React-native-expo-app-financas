@@ -12,7 +12,7 @@ import HeaderCustom from "../../components/header";
 import { AuthContext } from "../../contexts/auth";
 import api from "../../services/api";
 
-import { BackgroundCustom, EmailCustom, LogoutButton, LogoutText, MessageCustom, NameCustom } from "./styled";
+import { BackgroundCustom, LogoutButton, LogoutText, MessageCustom, NameCustom } from "./styled";
 
 export default function Profile() {
 
@@ -21,7 +21,7 @@ export default function Profile() {
     return(
       <BackgroundCustom>
         <HeaderCustom title="Meu Perfil" />
-        {/* style borderColor:'purple', borderWidth: 2  */}
+        
         <View style={{ width: '90%',flexDirection:"row", justifyContent:"flex-start"}}>
           <MessageCustom>
             Bem-vindo!
@@ -31,12 +31,9 @@ export default function Profile() {
         <View>
 
         <NameCustom numberOfLines={1}>
-        { user.name }
+        { user.name } 
         </NameCustom>
 
-        {/* <EmailCustom numberOfLines={1}>
-        { user?.email }   
-        </EmailCustom> */}
 
         </View>
       
