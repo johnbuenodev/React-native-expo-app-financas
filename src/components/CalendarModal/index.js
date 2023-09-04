@@ -7,6 +7,32 @@ import { Calendar, LocaleConfig } from 'react-native-calendars';
 
 import { ButtonFilterCustom, Container, ModalContent, TextButton} from "./styled";
 
+import { ptBrCustom } from './localeCalendar';
+
+//Somente criar o no LOCALE CALENDAR A LINGUA PARA O CALENDARIO E IMPORTAR AQUI PASSANDO PARA O LOCALES E DPS PARA O DEFAULT LOCALE
+LocaleConfig.locales['pt-br'] = ptBrCustom;
+
+// LocaleConfig.locales['pt-br'] = {
+//   monthNames: [
+//     'Janeiro',
+//     'Fevereiro',
+//     'Março',
+//     'Abril',
+//     'Maio',
+//     'Junho',
+//     'Julho',
+//     'Agosto',
+//     'Setembro',
+//     'Outubro',
+//     'Novembro',
+//     'Dezembro'
+//   ],
+//   monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+//   dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
+//   dayNamesShort: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'],
+// };
+LocaleConfig.defaultLocale = 'pt-br';
+
 export default function CalendarModal({setVisible, sendDateChanged}) {
 
     const [dateCurrent, setDateCurrent] = useState(new Date());

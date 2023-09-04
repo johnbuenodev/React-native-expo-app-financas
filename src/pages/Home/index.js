@@ -40,7 +40,17 @@ export default function Home() {
         
         // let isActive = true;
 
-        let dateFormated = format(dateCurrent, 'dd/MM/yyyy');
+        //Está data gerada tem o timezone incluso
+        //let dateFormated = format(dateCurrent, 'dd/MM/yyyy');
+
+        //gerando data nova sem o timezone
+        let date = new Date(dateCurrent);
+        let onlyDate = date.valueOf() + date.getTimezoneOffset() * 60 * 1000; 
+        let dateFormated = format(onlyDate, 'dd/MM/yyyy');
+
+        //somente a data agora
+        console.log(dateFormated);
+
         try {
             
           const response = await api.get("/balance", {
